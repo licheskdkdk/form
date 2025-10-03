@@ -1,251 +1,440 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>formz</title>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adaption Form</title>
+</head>
+<style>
+  
+  body {
+    background-color: #F1E0D1;
+    font-family: "Montserrat", sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #2d2d2d;
+  }
 
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        background-color: #fef3e2; /* soft cream */
-        color: #2d2d2d; /* charcoal text */
-      }
+  header{
+    background: #3E7C61;
+    border-bottom: 3px solid #fa812f;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+  }
 
-      header {
-        background: linear-gradient(to right,#fab12f,#fa812f); 
-        color: white;
-        padding: 10px 0;
-        text-align: center;
-      }
+  h1.logo {
+    margin: 0;
+    font-size: 50px;
+    color: #f4e1d2;
+  }
 
-      .logo {
-        font-size: 50px;
-        margin: 0;
-      }
+  nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-evenly;
+    
+  }
 
-      nav ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-      }
+  nav ul li {
+    margin: 15px;
+    
+  }
 
-      nav ul li {
-        display: inline;
-        margin: 0 15px;
-      }
+  nav ul li a {
+    color: rgb(155, 4, 4);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.5rem;
+    border: 3px solid rgb(184, 93, 93);
+    border-radius: 10px;
+    padding: 5px 10px;
+    background-color: rgb(245, 236, 236);
+  }
 
-      nav ul li a {
-        color: white;
-        text-decoration: none;
-      }
+  h2 {
+    text-align: center;
+    color: #4b3832;
+    font-size: 2rem;
+    letter-spacing: 3px;
+    margin: 50px 0 20px 0;
+  }
 
-      h2 {
-        text-align: center;
-        margin-top: 20px;
-        font-family: "Montserrat", sans-serif;
-        font-size: 2rem;
-        text-align: center;
-        color: #2d2d2d; /* dark charcoal for readability */
-        letter-spacing: 1px;
-        margin: 30px 0 10px 0;
-      }
+  #registration-form {
+    background-color: #fff;
+    max-width: 37%;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border: #2ffa80 3px solid;
+    overflow: hidden;
+  }
 
-      #registration-form {
-        background: #fff;
-        padding: 20px;
-        border: 1px solid #fa812f;
-        border-radius: 10px;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        max-width: 700px;
-        margin: 30px auto;
-        overflow: hidden;
-      }
+  .form-group{
+    display: block;
+    margin-bottom: 20px;
+  }
 
-      .form-group {
-        display: block;
-        margin-bottom: 14px; /* fixed typo */
-      }
+  .form-group label {
+    margin-bottom: 50px;
+    font-weight: bold;
+    margin-top: 40px;
+  }
 
-      .form-group label {
-        font-weight: bold;
-        margin-top: 4px;
-      }
+  input, 
+  select, 
+  textarea {
+    width: 100%;
+    margin-top: 4px;
+    padding: 10px;
+    border: 1.5px solid #bbb;
+    border-radius: 5px;
+    width: 90%;
+    font-size: 1rem;
+  }
 
-      input,
-      select,
-      textarea {
-        margin-top: 4px;
-        padding: 10px;
-        width: 100%;
-        border: 1px solid #bbb;
-        border-radius: 4px;
-      }
+/* ATTRIBUTE SELECTORS */
+  input[type=radio],
+  input[type=checkbox] {
+    margin-right: 10px;
+    width: auto;
+  }
 
-      /* ATTRIBUTE SELECTORS */
-      input[type="radio"],
-      input[type="checkbox"] {
-        width: auto;
-        margin-right: 5px;
-      }
+  input[required] {
+    border-left: 4px solid #e07a5f;
+  }
 
-      input[required] {
-        border-left: 4px solid #dd0303; /* red accent for required fields */
-      }
+/* PSEUDO-CLASS SELECTORS */
+  input:focus,
+  select:focus,
+  textarea:focus {
+    outline: none;
+    border: 1px solid #e07a5f;
+    box-shadow: 1px 2px 4px rgba(224, 122, 95, 0.6);
+  }
 
-      /* PSEUDO-CLASS SELECTORS */
-      input:focus,
-      select:focus,
-      textarea:focus {
-        outline: none;
-        border: 1px solid #fa812f;
-        box-shadow: 0 0 4px rgba(250, 129, 47, 0.6);
-      }
+  button {
+    background-color: #fa812f;
+    color: white;
+    
+    
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 14px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    margin: 20px 10px 10px 0;
+    /* transition: 0.3s; */
+  }
 
-      button {
-        padding: 10px 14px;
-        margin-top: 14px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        color: #fff;
-      }
+  button:hover {
+    background-color: #2f76fa;
+    color: #5414d3;
+  }
 
-      button[type="submit"] {
-        background: #dd0303; /* strong red CTA */
-      }
+  button[type=submit] {
+    background: #3d8361;
+    color: #fffdf7;
+  }
 
-      button[type="submit"]:hover {
-        background: #b20202; /* darker red */
-      }
+  button[type=submit]:hover {
+    background: #2f654b;
+    color: #fffdf7;
+  }
 
-      button[type="reset"] {
-        background: #fa812f; /* warm orange */
-      }
+  button[type="reset"] {
+    background: #f4e1d2; 
+    color: #4b3832;
+  }
 
-      button[type="reset"]:hover {
-        background: #fab12f; /* yellow-orange hover */
-      }
+  button[type="reset"]:hover {
+    background: #e07a5f; 
+    color: #fffdf7;
+  }
 
-      .form-row {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 20px;
-      }
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  
+  }
 
-      .form-group {
-        width: 90%;
-      }
+  #address {
+    grid-column: span 2;
+    width: 106%;
+  }
 
-      .form-group input {
-        width: 90%;
-      }
+  h3 {
+    text-align: center;
+    color: #DD6B4D; /* Secondary */
+  }
 
-      #address {
-        grid-column: span 2;
-        width: 101%;
-      }
+  hr {
+    border: 0px ;
+    height: 2px;
+    margin-bottom: 10px 0; 
+    background:#e07a5f;  
+  }
 
-      h3 {
-        text-align: center;
-        color: #fa812f; /* warm orange for section headers */
-      }
+  label[for="acknowledge"] {
+    line-height: 1.9;
+  }
 
-      hr {
-        border: 0;
-        height: 2px;
-        background: #fab12f;
-        margin: 10px 0;
-      }
+/* LIGHTBOX */
+  #lightbox {
+    
+    position: fixed; 
+    z-index: 1000; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    background:rgba(0,0,0,0.7); 
+    justify-content: center; 
+    align-items: center; 
+  }
 
-      label[for="acknowledge"] {
-        line-height: 1.9; /* better readability */
-      }
-    </style>
-  </head>
-  <body>
-    <header>
-      <h1 class="logo">🐾 Heart2Home</h1>
-      <nav>
-        <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Pets</a></li>
-          <li><a href="#">Adopt</a></li>
-        </ul>
-      </nav>
-    </header>
+  #lightbox .box {
+    background-color: #fffdf7; 
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 400px;
+    /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); */
+  }
 
-    <h2>~ ADAPTION FORM ~</h2>
+  #lightbox .box h2 {
+    margin: 15px 0 10px;
+    color: #e07a5f; 
+  }
+  #lightbox button {
+    margin: 20px auto  10px auto;
+    color: white;
+    background: #3d8361;
+    color: #fffdf7;
+  }
 
-    <div id="registration-form">
-      <h3>Personal Information</h3>
-      <form id="adoptForm" action="./submitted.html" method="post">
-        <div class="form-row">
-          <div class="form-group">
-            <label for="fname">First Name~</label><br />
-            <input
-              id="fname"
-              name="fname"
-              type="text"
-              placeholder="~"
-              required
-            />
-          </div>
+  #lightbox button:hover {
+    background: #2f654b;
+  }
+  #lightbox {
+    display: none; 
+  }
 
-          <div class="form-group">
-            <label for="lname">Last Name~</label><br />
-            <input
-              id="lname"
-              name="lname"
-              type="text"
-              placeholder="~"
-              required
-            />
-          </div>
+/* FOOTER */
 
-          <div class="form-group">
-            <label for="phone">Phone Number~</label><br />
-            <input
-              id="phone"
-              name="phone"
-              type="text"
-              placeholder="~"
-              required
-            />
-          </div>
+  footer {
+    background: #FFFCF7;
+    padding: 40px 20px 20px;
+    margin-top: 50px;
+    border-top: 1px solid #eee;
+  }
 
-          <div class="form-group">
-            <label for="email">Email Address~</label><br />
-            <input
-              id="email"
-              name="email"
-              type="email"
-              placeholder="email@example.com"
-              required
-            />
-          </div>
+  .footer-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: auto;
+    /* padding: 0 20px; */
+  }
 
-          <div class="form-group" id="address">
-            <label for="homeaddress">Home Address~</label><br />
-            <input
-              id="homeaddress"
-              name="homeaddress"
-              type="text"
-              placeholder="~"
-              required
-            />
-          </div>
-        </div>
+  .footer-brand h2 {
+    margin-bottom: 10px;
+    color: #DD6B4D;
+  }
 
-        <h3>Pet Selection</h3>
-        <hr />
-        <br />
+  .footer-brand p {
+    margin-bottom: 15px;
+    color: #555;
+  }
 
-        <label for="course">Which pet would you like to adopt?</label>
-        <select name="course" id="course" required>
-          <option value="">--Choose a Pet--</option>
+  .socials a {
+    color: #555;;
+    margin-right: 12px;
+    font-size: 1.2rem;
+    text-decoration: none;
+  }
+
+  .socials a:hover {
+    color: #DD6B4D;
+  }
+
+  .footer-links h3,
+  .footer-contact h3,
+  .footer-form h3 {
+    margin-bottom: 12px;
+    color: #555;
+  }
+
+  .footer-links ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .footer-links ul li {
+    margin: 6px 0;
+  }
+
+  .footer-links ul li a {
+    color: #555;
+    text-decoration: none;
+  }
+
+  .footer-links ul li a:hover {
+    color: #DD6B4D;
+  
+  }
+
+  .footer-contact p {
+    margin: 5px 0;
+    color: #555;
+  }
+
+  .footer-contact i {
+    margin-right: 8px;
+    color: #DD6B4D;
+  }
+
+  .footer-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    
+    /* padding: 10px; */
+    /* border-radius: 5px; */
+    /* background-color: #dedddc; */
+  }
+
+  .footer-form input,
+  .footer-form textarea {
+    
+    margin-bottom: 10px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 0.9rem;
+  }
+
+  .footer-form button {
+    background-color: #DD6B4D;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 10px;
+    cursor: pointer;
+    font-weight: bold;
+   
+  }
+
+  .footer-form button:hover {
+    background-color: #b3543a;
+  }
+
+  .footer-bottom {
+    grid-column: span 4;
+    text-align: center;
+    margin-top: 30px;
+    color: #777;
+    font-size: 0.9rem;
+  }
+
+</style>
+<body>
+  
+  <header>
+    <h1 class="logo">🐾 Heart2Home</h1>
+    <nav>
+      <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">PETography</a></li>
+      <li><a href="#">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <h2>~ ADAPTION FORM ~</h2>
+
+  <div id="registration-form">
+    <h3>Personal Information</h3>
+    <form id="adoptForm" action="./submitted.html" method="post">
+
+    <div class="form-row">
+
+      <div class="form-group">
+        <label for="fname">First Name</label> <br />
+        <input 
+          id="fname" 
+          name="fname" 
+          type="text" 
+          placeholder="~" 
+          required 
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="lname">Last Name</label> <br />
+        <input 
+          id="lname" 
+          name="lname" 
+          type="text" 
+          placeholder="~" 
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Phone Number</label> <br />
+        <input 
+          id="phone" 
+          name="phone" 
+          type="tel" 
+          placeholder="Enter phone number~" 
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Address</label> <br />
+        <input 
+          id="email" 
+          name="email" 
+          type="email" 
+          placeholder="email@example.com" 
+          required
+        /> 
+      </div>
+
+      <div class="form-group" id="address">
+        <label for="homeaddress">Home Address</label> <br />
+        <input 
+          id="homeaddress" 
+          name="address" 
+          type="text" 
+          placeholder="~" 
+          required
+        />
+      </div>
+    </div>
+
+      <h3>Pet Selection-</h3>
+      <hr />
+      <br />
+
+      <label for="course">Whick pet would you like to adapt?</label>
+      <select 
+        id="course"
+        name="course"
+        required>
+
+        <option value="" disabled selected>-- Select a pet --</option>
+
+        <!-- DOGS SECTION -->
           <optgroup label="Dogs">
             <option value="Labrador">Labrador Retriever</option>
             <option value="GermanShepherd">German Shepherd</option>
@@ -258,6 +447,8 @@
             <option value="Boxer">Boxer</option>
             <option value="Dachshund">Dachshund</option>
           </optgroup>
+
+        <!-- CATS SECTION -->
           <optgroup label="Cats">
             <option value="Persian">Persian</option>
             <option value="MaineCoon">Maine Coon</option>
@@ -265,104 +456,276 @@
             <option value="Ragdoll">Ragdoll</option>
             <option value="Bengal">Bengal</option>
             <option value="Sphynx">Sphynx</option>
-          </optgroup>
-        </select>
+          </optgroup>        
+      </select>
 
-        <br /><br />
+      <br />
+      <br />
 
-        <h3>Experience & Living Situation</h3>
-        <hr />
+      <h3> Experience and Living Situation </h3>
+      <hr />
 
-        <p>Pet ownership experience</p>
-        <input
-          type="radio"
-          name="experience"
-          id="exp1"
-          value="first-time"
-          required
-        />
-        <label for="exp1">First-time pet owner</label><br />
-        <input type="radio" name="experience" id="exp2" value="some" />
-        <label for="exp2">Some experience with pets</label><br />
-        <input type="radio" name="experience" id="exp3" value="very" />
-        <label for="exp3">Very experienced with pets</label><br />
+      <p>Pet Ownership Experience</p>
 
-        <br />
+    <!-- EXP 1 -->
+      <input
+        id="exp1" 
+        type="radio"
+        name="experience"
+        value="first-time"
+        required
+      />
+      <label for="exp1">First-time pet owner</label> <br />
+    
+    <!-- EXP 2 -->
+      <input 
+        type="radio" 
+        name="experience" 
+        id="exp2" 
+        value="some" 
+      />
+      <label for="exp2">Some experience with pets</label> <br />
+    
+    <!-- EXP 3 -->  
+      <input 
+        type="radio" 
+        name="experience" 
+        id="exp3" 
+        value="very" 
+      />
+      <label for="exp3">Very experienced with pets</label><br />
 
-        <p>Living space</p>
-        <input
-          type="radio"
-          name="space"
-          id="space1"
-          value="apartment"
-          required
-        />
-        <label for="space1">Apartment</label><br />
-        <input type="radio" name="space" id="space2" value="house" />
-        <label for="space2">House</label><br />
-        <input type="radio" name="space" id="space3" value="other" />
-        <label for="space3">Other</label><br />
+      <br />
 
-        <br />
+      <p>Living Space</p>
 
-        <p>Do you have a yard?</p>
-        <input type="radio" name="yard" id="yard1" value="fenced" required />
-        <label for="yard1">Yes, fenced</label><br />
-        <input type="radio" name="yard" id="yard2" value="unfenced" />
-        <label for="yard2">Yes, unfenced</label><br />
-        <input type="radio" name="yard" id="yard3" value="none" />
-        <label for="yard3">No Yard</label><br />
+    <!-- LIVING 1 -->
+      <input 
+        type="radio" 
+        name="space" 
+        id="space1" 
+        value="apartment" 
+        required
+      />
+      <label for="space1">Apartment</label> <br />
 
-        <br />
+    <!-- LIVING 2 -->
+      <input 
+        type="radio" 
+        name="space" 
+        id="space2" 
+        value="house" 
+      />
+      <label for="space2">House</label> <br />
 
-        <h3>Commitment & Care</h3>
-        <hr />
+    <!-- LIVING 3 -->  
+      <input 
+        type="radio" 
+        name="space" 
+        id="space3" 
+        value="farm"
+      />
+      <label for="space3">Other:</label><br />
 
-        <p>How much time can you dedicate to your pet daily?</p>
-        <input type="radio" name="time" id="time1" value="1-2" required />
-        <label for="time1">1-2 hours</label><br />
-        <input type="radio" name="time" id="time2" value="3-5" />
-        <label for="time2">3-5 hours</label><br />
-        <input type="radio" name="time" id="time3" value="6+" />
-        <label for="time3">6+ hours</label><br />
-        <input type="radio" name="time" id="time4" value="most" />
-        <label for="time4">Most of the day</label><br />
+      <br />
 
-        <br />
+      <p>Do You Have A Yard</p>
 
-        <p>Acknowledgment</p>
-        <input
-          type="checkbox"
-          id="acknowledge"
-          name="acknowledge"
-          value="yes"
-          required
-        />
-        <label for="acknowledge"
-          >I understand that adopting a pet is a long-term commitment
-          (potentially 10-20 years). I agree to provide proper veterinary care,
-          love, and attention for the duration of the pet's life. I understand
-          that this application will be reviewed and I may be contacted for
-          additional information or a home visit.</label
-        ><br />
+    <!-- YARD 1 -->
+      <input 
+        type="radio" 
+        name="yard" 
+        id="yard1" 
+        value="yes" 
+        required
+    />
+      <label for="yard1">Yes, fenced</label> <br />
 
-        <br />
+    <!-- YARD 2 -->
+      <input 
+        type="radio" 
+        name="yard" 
+        id="yard2" 
+        value="unfenced" 
+      />
+      <label for="yard2">Yes, unfenced</label> <br />
 
-        <label for="comments">Why do you want to adopt a pet? </label>
-        <textarea
-          name="comments"
-          id="comments"
-          rows="4"
-          placeholder="Please tell us your reasons for adopting a pet and how you plan to care for them."
-          required
-        ></textarea>
+    <!-- YARD 3 -->
+      <input 
+        type="radio"
+        name="yard"
+        id="yard3" 
+        value="none"
+      />
+      <label for="yard3">No Yard</label> <br />
 
-        <button type="submit">Register</button>
-        <button type="reset">Clear Form</button>
-      </form>
+      <br />
+
+      <h3>Commitment & Care</h3>
+      <hr />
+
+
+      <p>How much time can you dedicate to your pet daily?</p>
+
+    <!-- TIME 1 -->
+      <input 
+        type="radio" 
+        name="time" 
+        id="time1" 
+        value="1-2" 
+        required
+      />
+      <label for="time1">1-2 hours</label> <br />
+
+    <!-- TIME 2 -->
+      <input 
+        type="radio" 
+        name="time" 
+        id="time2" 
+        value="3-5" 
+      />
+      <label for="time2">3-5 hours</label> <br />
+
+    <!-- TIME 3 -->
+      <input 
+        type="radio" 
+        name="time" 
+        id="time3" 
+        value="6+" 
+      />
+      <label for="time3">6+ hours</label> <br />
+
+    <!-- MOST OF THE DAY -->
+      <input 
+        type="radio" 
+        name="time" 
+        id="time4" 
+        value="most"
+      />
+      <label for="time4">Most of the day ^^</label> <br />
+
+      <br />
+
+      <p>Acknowledgment</p>
+      <input 
+        type="checkbox" 
+        id="acknowledge" 
+        name="acknowledge" 
+        value="yes"
+        required
+      />
+      <label for="acknowledge">I acknowledge that adopting a pet is a long-term 
+        commitment (potentially 10-20 years). I agree to provide proper veterinary 
+        care, love, and attention for the duration of the pet's life. 
+        I understand that this application will be reviewed and I may be contacted 
+        for additional information or a home visit.
+      </label> 
+
+      <br />
+      <br />
+
+      <label for="comments">Why do you want to adopt a pet?</label>
+      <textarea 
+        name="comments" 
+        id="comments"
+        rows="4"
+        placeholder="Please tell us your reasons for adopting a pet and how you plan to care for them.">
+      </textarea>
+
+      <button type="submit">ADOPT</button>
+      <button type="reset">CLEAR</button>
+
+    </div> 
+    </form>
+  </div>
+
+  
+<!-- LIGHT BOX -->
+  <div id="lightbox">
+    <div class="box">
+      <h2>Form Submmitted!</h2>
+      <p>your application will be reviewed <br /> in 24-48 hours </p>
+      <button id="closeLightbox">Close</button>
     </div>
+  </div>
 
-    <script src="skript.js"></script>
-  </body>
+
+<!-- YAEY, FOOTER NA -->
+  <footer>
+    <section class="footer-container">
+      <div class="footer-brand">
+        <h2>❤️ Heart2Home Pets</h2>
+        <p>Because every companion deserves a better home</p>
+
+        <div class="socials">
+          <a href="#"><i class="fab fa-facebook-f">fb</i></a>
+          <a href="#"><i class="fab fa-instagram">ig</i></a>
+          <a href="#"><i class="fab fa-twitter">x</i></a>
+        </div>
+      </div>
+
+      <div class="footer-links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="#">Pet Section</a></li>
+          <li><a href="#">Adoption Process</a></li>
+          <li><a href="#">PETography</a></li>
+          <li><a href="#">About Us</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-contact">
+        <h3>Contact Info</h3>
+        <p><i class="fas fa-envelope"></i> heart2home@example.com</p>
+        <p><i class="fas fa-phone"></i> +63 912 345 6789</p>
+      </div>
+
+      <div class="footer-form">
+        <h3>Get in Touch</h3>
+        <form>
+          <input 
+          type="text" 
+          placeholder="Your Name" 
+          required>
+
+          <input 
+          type="email" 
+          placeholder="Your Email"
+          required>
+
+          <textarea 
+          placeholder="Your Message" 
+          rows="3"></textarea>
+
+          <button type="submit">Send Message</button>
+        </form>
+      </div>
+
+      <di class="footer-bottom">
+        <p>© 2025 Heart2Home Pets. All Rights Reserved.</p>
+        <p>Made with ❤️ by Group 5</p>
+      </div>
+    </section>
+  </footer>
+
+<!-- JAVASCIPT NA -->
+  <script>
+    const form = document.getElementById('adoptForm');
+    const lightbox = document.getElementById('lightbox');
+    const closeBtn = document.getElementById('closeLightbox');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+    // Show the lightbox
+      lightbox.style.display = 'flex';
+    });
+
+    closeBtn.addEventListener('click', function() {
+      lightbox.style.display = 'none'; // hide popup
+      form.reset(); // clear form if you want
+    });
+  </script>
+
+</body>
 </html>
-
